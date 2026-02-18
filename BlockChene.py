@@ -77,7 +77,7 @@ class Blockchain:
         """
         return self.chain[-1]
     
-    def proof_of_work(self, last_proof):
+    def proof_of_work_t(self, last_proof):
         """
         Simple Proof of Work Algorithm:
         - Find a number p' such that hash(pp') contains leading 4 zeroes, where p is the previous p'
@@ -87,13 +87,13 @@ class Blockchain:
         :return: <int>
         """
         proof = 0
-        while self.valid_proof(last_proof, proof) is False:
+        while self.valid_proof_t(last_proof, proof) is False:
             proof += 1
 
         return proof
     
     @staticmethod
-    def valid_proof(last_proof, proof):
+    def valid_proof_t(last_proof, proof):
         """
         Validates the Proof
 
@@ -291,7 +291,7 @@ if __name__ == '__main__':
     print("\nMinage en cours...")
     last_block = blockchain.last_block
     last_proof = last_block['proof']
-    proof = blockchain.proof_of_work(last_proof)
+    proof = blockchain.proof_of_work_t(last_proof)
     print(f"Preuve trouvée : {proof}")
     
     print("Ajout de la récompense de minage pour Alice (+100)...")
